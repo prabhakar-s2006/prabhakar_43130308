@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        padding:0px;
+        margin:0px;
+        font-family: "Montserrat", sans-serif;
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+
+
+    }
+    .nav-bar{
+
+        width:100%;
+        height:40px;
+        background-color: grey;
+        display:flex;
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: center;
+        }
+    .nav-brand{
+        height:100%;
+        width:90px;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: center;
+
+
+
+    }   
+    .nav-center{
+        height:100% ;
+        width:220px;   
+        
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: center;
+    } 
+    .nav-center > a{
+        text-decoration:None;
+        color: black;
+        margin:5px
+         }
+    .nav-sign{
+        height:100%;
+        width:120px;
+       
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+        align-items: center;
+       
+         }
+         .nav-sign > button{
+            border-radius: 30px;
+            margin: 3px;
+            background-color: grey;
+            /* font-family: "Montserrat", sans-serif; */
+         }
+         .nav-sign > img{
+            margin:3px;
+         }
+         @media only screen and (max-width:600px){
+            body{
+                
+            }
+            .nav-center{
+                display:none
+            }
+            .content-poster > p{
+                display:none;
+            }
+         }
+         .poster{
+            height:300px;
+            width:50%;
+            
+            margin:40px 0px;
+         }
+         .img-poster{
+            height:100%;
+            width:100%;
+            border-radius: 10px;
+        }
+        .content-poster{
+            height:100%;
+            width:100%;
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            text-align: center;
+            color: #ffffff;
+            margin-top: -304px;
+        }
+        .content-poster > p, .content-poster > h1 {
+            width: 50%;
+        }
+        .food{
+            width:50%;
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:start;
+            
+        }
+        .food-items{
+            height:200px;
+            width:100%;
+            /*background-color: chartreuse;*/
+            display:flex;
+            flex-direction: row;
+            justify-content:start;
+            align-items:start;
+
+            overflow-y: hidden;
+        }
+        .food-1{
+            display:flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+            margin:10px;
+        }
+        .form>button>a{
+            text-decoration:none;
+        }
+
+
+        
+         
+
+
+      
+</style>
+<body>
+    <div class="nav-bar">
+        <div class="nav-brand">FoodPrep</div>
+        <div class="nav-center">
+            <a href="./">Home</a>
+            <a href="./">Menu</a>
+            <a href="./">Contact us</a>
+        </div>
+        <div class="nav-sign">
+            <img src="./icons8-bag-30.png">
+            <button class="btn-signup" style="font-family: Montserrat, sans-serif;">Sign up</button>
+        </div>
+    </div>
+    <div class="poster">
+        <img  class="img-poster" src="./background.jpg">
+        <div class="content-poster">
+            <h1>order your favourite food here</h1>
+            <p>choose form diverse menu featuring adelecutable arry of dishes crefted with finest incridents and culinary expertise</p>
+        <div class="form">
+            <button><a href="#">view menu</a></button></div>
+
+        </div>
+
+    </div>
+    <div class="food">
+        <h1>Explore Our Menu</h1>
+        <p>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
+        <div class="food-items">
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./easy-image.jpg" style="border-radius: 50%;">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+            <div class="food-1">
+                <img src="./menu-1.webp">
+                <p>Salad</p>
+            </div>
+
+        </div>
+
+
+    </div>
+    
+       
+    
+</body>
+</html>
