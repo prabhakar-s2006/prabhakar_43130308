@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO Game</title>
+</head>
+<style>
+    body{
+        color:aliceblue;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;    
+    }
+    .table,td{
+        text-align: center;
+        border: 1px solid white;
+        border-collapse: collapse;
+        height: 80px;
+        width: 80px;
+
+    }
+    .table,td:hover{
+        background-color:rgb(254, 141, 198);
+    }
+    .button{
+        display: flex;
+        margin-top: 10px;
+        margin-left: -190px;
+        
+
+    }
+    .button > button{
+        height: 30px;
+        width: 50px;
+    }
+</style>
+<body>
+    <h1>XO game</h1>
+    <p>(X plays 1st)</p>
+    <table>
+        <tr>
+            <td class="click" onclick="update(0)"></td>
+            <td class="click" onclick="update(1)"></td>
+            <td class="click" onclick="update(2)"></td>
+        </tr>
+        <tr>
+            <td class="click" onclick="update(3)"></td>
+            <td class="click" onclick="update(4)"></td>
+            <td class="click" onclick="update(5)"></td>
+        </tr>
+        <tr>
+            <td class="click" onclick="update(6)"></td>
+            <td class="click" onclick="update(7)"></td>
+            <td class="click" onclick="update(8)"></td>
+        </tr>
+    </table>
+    <div class="button">
+        <button onclick="reset()">reset</button>
+
+    </div>
+</body>
+<script>
+    count=0
+    function update(i){
+        const obj=document.getElementsByClassName("click")[i]
+        if(count%2!=0 && obj.innerHTML=='' ){
+            obj.innerHTML='O'
+            count++
+            check()
+        }
+        else if(obj.innerHTML==''){
+            obj.innerHTML='X'
+            count++
+            check()
+        }
+
+
+    }
+    function reset(){
+        for(i=0;i<9;i++){
+            document.getElementsByClassName("click")[i].innerHTML=''}
+            count=0
+    }
+    function check(){
+        if(count%2!=0)
+    {
+        ele='X'
+    }
+        else{
+            ele='O'
+        }
+        
+        
+       
+        if((objec(0)!=''&&objec(1)!=''&&objec(2)!='')&&(objec(0)===objec(1)&&objec(1)==objec(2))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(3)!=''&&objec(4)!=''&&objec(5)!='')&&(objec(3)===objec(4)&&objec(4)==objec(5))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(6)!=''&&objec(7)!=''&&objec(8)!='')&&(objec(6)===objec(7)&&objec(7)==objec(8))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(0)!=''&&objec(3)!=''&&objec(6)!='')&&(objec(0)===objec(3)&&objec(3)==objec(6))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(1)!=''&&objec(4)!=''&&objec(7)!='')&&(objec(1)===objec(4)&&objec(4)==objec(7))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(2)!=''&&objec(5)!=''&&objec(8)!='')&&(objec(2)===objec(5)&&objec(5)==objec(8))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(0)!=''&&objec(4)!=''&&objec(8)!='')&&(objec(0)===objec(4)&&objec(4)==objec(8))){
+            alert(`${ele} won`)
+            reset()
+        }
+        else if((objec(2)!=''&&objec(4)!=''&&objec(6)!='')&&(objec(2)===objec(4)&&objec(4)==objec(6))){
+            alert(`${ele} won`)
+            reset()
+        }
+         else if(count==9){
+            alert("GAME DRAW")
+            reset()
+        }
+        
+    }
+    function objec(i){
+        const obj=document.getElementsByClassName("click")[`${i}`].innerHTML
+        return obj
+    }
+
+</script>
+</html>
