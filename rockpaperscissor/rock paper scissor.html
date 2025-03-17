@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<style>
+    body {
+        max-width: 80%;
+        max-height: 80vh;
+        margin-left: 10%;
+        margin-top: 5%;
+        background-color: black;
+        color: aliceblue;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container > table {
+        border: 2px solid black;
+    }
+    .container > div {
+        margin-bottom: 50px;
+    }
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .click {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 10px;
+    }
+    .info {
+        display: flex;
+        flex-direction: row;
+    }
+    .info > p {
+        margin: 10px;
+    }
+    .choice-img {
+        width: 80px;
+        height: 80px;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissor</h1>
+        
+        
+        <div>
+            <img src="rock.jpg" alt="Rock" class="click" onclick="react(0)" />
+            <img src="paper.jpg" alt="Paper" class="click" onclick="react(1)" />
+            <img src="scissor.jpg" alt="Scissor" class="click" onclick="react(2)" />
+        </div>              
+        
+        <div>
+            <p id="result">---</p>
+        </div>
+
+        <div>
+            <table style="text-align: center;">
+                <tr>
+                    <td>User</td>
+                    <td>Computer</td>
+                </tr>
+                <tr>
+                    <td><img id="user_ip" class="choice-img" src="rockPaperScissor/placeholder.jpg" alt="User Choice"></td>
+                    <td><img id="computer_ip" class="choice-img" src="rockPaperScissor/placeholder.jpg" alt="Computer Choice"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="info">
+            <p class="result1">win : 0</p>
+            <p class="result1">loss : 0</p>
+            <p class="result1">tie : 0</p>
+        </div>
+
+        <button style="margin-top: -30px;" onclick="reset()">Reset</button>
+    </div>
+
+<script>
+    let tie = 0;
+    let win = 0;
+    let loss = 0;
+
+    function react(num) {
+        const choices = ["rock", "paper", "scissor"];
+        const userChoice = choices[num];
+        const computerChoice = choices[Math.floor(Math.random() * 3)];
+        
+     
+        document.getElementById("user_ip").src = `rockPaperScissor/${userChoice}.jpg`;
+        document.getElementById("computer_ip").src = `rockPaperScissor/${computerChoice}.jpg`;
+
+        update(userChoice, computerChoice);
+    }
+
+    function update(user, computer) {
+        if (user === computer) {
+            document.getElementById("result").innerHTML = "Tie";
+            tie++;
+        } else if (
+            (user === "rock" && computer === "scissor") ||
+            (user === "scissor" && computer === "paper") ||
+            (user === "paper" && computer === "rock")
+        ) {
+            document.getElementById("result").innerHTML = "Win";
+            win++;
+        } else {
+            document.getElementById("result").innerHTML = "Lose";
+            loss++;
+        }
+
+        update_score(win, loss, tie);
+    }
+
+    function update_score(win, loss, tie) {
+        document.getElementsByClassName("result1")[0].innerHTML = `win : ${win}`;
+        document.getElementsByClassName("result1")[1].innerHTML = `loss : ${loss}`;
+        document.getElementsByClassName("result1")[2].innerHTML = `tie : ${tie}`;
+
+        check(win, loss, tie);
+    }
+
+    function check(win, loss, tie) {
+        if (win === 3) {
+            alert("You won!");
+            reset();
+        } else if (loss === 3) {
+            alert("You lost!");
+            reset();
+        } else if (tie === 3) {
+            alert("Game ended as tie!");
+            reset();
+        }
+    }
+
+    function reset() {
+        document.getElementById("result").innerHTML = "---";
+        win = 0;
+        loss = 0;
+        tie = 0;
+        document.getElementsByClassName("result1")[0].innerHTML = `win : ${win}`;
+        document.getElementsByClassName("result1")[1].innerHTML = `loss : ${loss}`;
+        document.getElementsByClassName("result1")[2].innerHTML = `tie : ${tie}`;
+        document.getElementById("user_ip").src = "rockPaperScissor/placeholder.jpg";
+        document.getElementById("computer_ip").src = "rockPaperScissor/placeholder.jpg";
+    }
+</script>
+
+</body>
+</html>
