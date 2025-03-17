@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+</head>
+<style>
+    body{
+        background-color: salmon;
+        height: 100vh;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+    .todo-container{
+        display: flex;
+        flex-direction: column;
+        width :400px;
+        background-color: antiquewhite;
+    }
+    .todo-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .todo-body{
+    }
+    .todo-tasks{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border: 2px solid black;
+        margin-bottom: 15px;
+    } 
+    .todo-footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .todo-footer >button,.todo-header >button {
+        height: 30px;
+    }
+</style>
+<body>
+    <div class="todo-container">
+        <div class="todo-header">
+            <input type="text" id="input" placeholder="Enter your task">
+            <button onclick="add_task()">add task</button>
+        </div>
+        <div class="todo-body">
+        </div>
+        <div class="todo-footer">
+            <p id="pending-tasks">pending tasks: 0</p>
+            <button onclick="clear_task()">clear tasks</button>
+        </div>
+    </div>
+</body>
+<script>
+let data = [];
+function add_task(){
+    const input = document.getElementById("input");
+    let name = input.value;
+    const tasks = {
+        status: false,
+        taskname: name
+    };
+    if(name != ''){
+        data.push(tasks);
+        render();
+        console.log(tasks);
+    }
+}
+document.getElementById("input").placeholder = "Enter your task";
+
+function render(){
+    document.getElementById("input").placeholder = "Enter your task";
+    let taskdata = "";
+    for(let i = data.length - 1; i >= 0; i--){
+        taskdata = taskdata +
+            `<div class="todo-tasks">
+                <input type="checkbox" onclick="checkbox(${i})" ${data[i].status ? 'checked' : ''}>
+                <p id="para" style="text-decoration: ${data[i].status ? 'line-through' : 'none'};">${data[i].taskname}</p>
+                <button onclick="del_task(${i})"> del</button>
+            </div>\n`;
+    }
+    console.log(taskdata);
+    document.getElementsByClassName("todo-body")[0].innerHTML = taskdata;
+    console.log(data);
+
+    
+    updatePendingTasks();
+}
+
+function updatePendingTasks() {
+    const pendingTasks = data.filter(task => !task.status).length; 
+    document.getElementById("pending-tasks").innerText = `pending tasks: ${pendingTasks}`;
+}
+
+function clear_task(){
+    data = [];
+    render();
+}
+function del_task(i){
+    data.splice(i, 1);
+    render();
+}
+function checkbox(i){
+    data[i].status = !data[i].status; 
+    render();
+}
+</script>
+</html>
